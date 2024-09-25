@@ -1,30 +1,60 @@
-## YouTube Downloader with Resolution Selection
 
-This Python script uses the `yt-dlp` library to download YouTube videos, allowing users to select the desired resolution.
+# YouTube Video Downloader with Resolution Selection and Compression
 
-### Inputs:
+This Python project provides a script for downloading YouTube videos with custom resolution selection and optional compression. It utilizes the `yt-dlp` library for video downloading and FFmpeg for post-download compression.
 
-- **URL (str):** The URL of the YouTube video to download.
-- **Output Path (str):** The directory where the downloaded video will be saved.
+## Features
 
-### Outputs:
+- Fetches available resolutions for a given YouTube video
+- Allows users to select their desired resolution
+- Downloads the video in the chosen resolution
+- Offers an option to compress the downloaded video using FFmpeg
+- Displays file size before and after compression
 
-- **Downloaded Video (mp4):** The YouTube video downloaded at the selected resolution, saved in the specified output path.
+## Inputs
 
-### Process:
+1. **YouTube URL**: The URL of the video to be downloaded
+2. **Output Path**: The directory where the video will be saved
+3. **Desired Resolution**: User's choice from available resolutions
+4. **Compression Option**: Whether to compress the video after download
+5. **CRF Value**: Constant Rate Factor for compression (if compression is chosen)
 
-1. **Get Available Resolutions:** The script first checks the available resolutions for the provided YouTube video.
-2. **Display Resolutions:** It presents the user with a list of available resolutions.
-3. **User Input:** The user is prompted to enter their desired resolution.
-4. **Resolution Validation:** The script validates the user's input, ensuring it's a valid resolution from the available options.
-5. **Download Video:** The script downloads the video at the specified resolution, saving it in the designated output path.
-6. **Download Completion:** Upon successful download, the script confirms completion and indicates the resolution of the downloaded video.
+## Outputs
 
-### Usage:
+1. **Downloaded Video**: The YouTube video saved in the specified output path
+2. **Compressed Video**: (Optional) A compressed version of the downloaded video
+3. **Console Output**: Information on available resolutions, download progress, and compression results
 
-1. Install the `yt-dlp` library: `pip install yt-dlp`
-2. Run the script (e.g., `python test.py`)
-3. Enter the YouTube video URL when prompted.
-4. Select the desired resolution from the displayed options.
+## Usage
 
-The script will download the video at the chosen resolution and save it to the specified output path.
+1. Install required libraries:
+   ```
+   pip install yt-dlp
+   ```
+2. Ensure FFmpeg is installed on your system
+3. Run the script:
+   ```
+   python youtube_downloader.py
+   ```
+4. Follow the prompts to enter the YouTube URL, select resolution, and choose compression options
+
+## Code Structure
+
+- `get_available_resolutions(url)`: Fetches available resolutions for a given YouTube video
+- `download_video(url, output_path, resolution)`: Downloads the video at the specified resolution
+- `compress_video(input_file, output_file, crf)`: Compresses the downloaded video using FFmpeg
+- Main script logic:
+  - Prompts for YouTube URL
+  - Displays available resolutions
+  - Downloads video in chosen resolution
+  - Offers compression option
+  - Compresses video if chosen
+  - Displays file size comparison
+
+## Notes
+
+- The project includes a `.gitignore` file to exclude virtual environments, Python cache files, and downloaded videos from version control
+- A `README.md` file provides basic usage instructions
+- The `improved.md` file suggests further enhancements, including the implemented compression feature
+
+This project is useful for users who want to download YouTube videos in specific resolutions and have control over the file size through optional compression.
